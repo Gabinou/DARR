@@ -13,7 +13,7 @@
 #define DARR_NUM(arr) (*((size_t *)arr - 1)) // number of active elements
 #define DARR_INIT(arr, type, len) (type*)(((size_t* )malloc(sizeof(size_t)*2 + sizeof(type)*(len)))+2);\
     (*((size_t *)arr - 2))=len
-#define DARR_REALLOC(arr, len) ((size_t* )realloc(((size_t* )arr - 2), (sizeof(size_t)*2 + (sizeof(*arr))*(len)))+2)
+#define DARR_REALLOC(arr, len) (void *)((size_t* )realloc(((size_t* )arr - 2), (sizeof(size_t)*2 + (sizeof(*arr))*(len)))+2)
 #define DARR_DEL(arr, elem, bytesize, num) memcpy((arr + elem), (arr + (num - 1)), bytesize)
 #define DARR_GROW(arr) DARR_LEN(arr)*=DARR_GROWTH_FACTOR;\
 arr = DARR_REALLOC(arr, DARR_LEN(arr));
