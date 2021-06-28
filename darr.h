@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 // DARR: Dynamic arrays for C99.
-// A darr is basically an array with two additional elements, allocated length and number of active element saved at positions -2 and -1 respectively. 
+// A darr is basically an array with two additional elements, allocated length and number of active element saved at positions -2 and -1 respectively.
 
 #define DARR_GROWTH_FACTOR 2
 #define DARR_PTR_SHIFT 2
@@ -23,7 +23,7 @@
     (*((size_t *)darr + DARR_NUM_INDEX)) = 0;\
 
 // DARR_REALLOC: DARR internal. Not to be called directly by users.
-#define DARR_REALLOC(darr, len) (void *)((size_t* )realloc(((size_t* )darr + DARR_LEN_INDEX), (sizeof(size_t)*DARR_PTR_SHIFT + (sizeof(*darr))*(len)))+DARR_PTR_SHIFT)
+#define DARR_REALLOC(darr, len) (void *)((size_t* )realloc(((size_t* )darr + DARR_LEN_INDEX), (sizeof(size_t)*DARR_PTR_SHIFT + (sizeof(*darr))*(len))) + DARR_PTR_SHIFT)
 
 // DARR_DEL_SCRAMBLE: delete elem by copying top element over it, and decrementing DARR_NUM
 #define DARR_DEL_SCRAMBLE(darr, elem) do {\

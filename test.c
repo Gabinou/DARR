@@ -103,9 +103,9 @@ void test_log2() {
 
 void test_struct() {
     typedef struct temp_struct_def {
-        uint8_t a;    
-        uint64_t b;    
-        float c;    
+        uint8_t a;
+        uint64_t b;
+        float c;
     } temp_struct_def;
     size_t test_arr_len = 10;
     temp_struct_def * test_arr = DARR_INIT(test_arr, temp_struct_def, test_arr_len);

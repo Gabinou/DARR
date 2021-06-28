@@ -12,6 +12,7 @@ Add ```darr.h``` to your source code.
 ## Features
 - Single file library.
 - Very simple: a darr is an array.
+- Short: < 100 lines
 
 ## Motivation
 Make a very simple dynamic array. 
