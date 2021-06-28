@@ -22,31 +22,41 @@
 
 // DARR_INIT: a darr is an array with two size_t at indices -1 and -2.
 //    EX: uint8_t * test_arr = DARR_INIT(test_arr, uint8_t, test_arr_len);
-#define DARR_INIT(arr, type, len) do {(type*)(((size_t* )malloc(sizeof(size_t)*DARR_PTR_SHIFT + sizeof(type)*(len)))+DARR_PTR_SHIFT);\
+#define DARR_INIT(arr, type, len) do {\
+    (type*)(((size_t* )malloc(sizeof(size_t)*DARR_PTR_SHIFT + sizeof(type)*(len)))+DARR_PTR_SHIFT);\
     (*((size_t *)arr + DARR_LEN_INDEX)) = len;\
-    (*((size_t *)arr + DARR_NUM_INDEX)) = 0;} while(0)
+    (*((size_t *)arr + DARR_NUM_INDEX)) = 0;\
+} while(0)
 
 // DARR_REALLOC: DARR internal. Not to be called directly by users.
-#define DARR_REALLOC(arr, len) do {(void *)((size_t* )realloc(((size_t* )arr + DARR_LEN_INDEX), (sizeof(size_t)*DARR_PTR_SHIFT + (sizeof(*arr))*(len)))+DARR_PTR_SHIFT)} while(0)
+#define DARR_REALLOC(arr, len) do {\
+    (void *)((size_t* )realloc(((size_t* )arr + DARR_LEN_INDEX), (sizeof(size_t)*DARR_PTR_SHIFT + (sizeof(*arr))*(len)))+DARR_PTR_SHIFT)\
+} while(0)
 
 // DARR_DEL_SCRAMBLE: delete elem by copying top element over it, and decrementing DARR_NUM
-#define DARR_DEL_SCRAMBLE(arr, elem) do {if (elem < DARR_NUM(arr)) {\
+#define DARR_DEL_SCRAMBLE(arr, elem) do {\
+    if (elem < DARR_NUM(arr)) {\
     arr = memmove((arr + elem), (arr + --DARR_NUM(arr)), sizeof(*arr));\
-} } while(0)
-
+}\
+} while(0)
 
 // DARR_DEL: delete elem by moving all subsequent elements over
-#define DARR_DEL(arr, elem) do {memmove((arr + elem), (arr + elem + 1), sizeof(*arr) * (--DARR_NUM(arr) - elem))} while(0)
+#define DARR_DEL(arr, elem) do {\
+    memmove((arr + elem), (arr + elem + 1), sizeof(*arr) * (--DARR_NUM(arr) - elem))\
+} while(0)
 
 // DARR_GROW: double length of array (depending on DARR_GROWTH_FACTOR)
-#define DARR_GROW(arr) do {DARR_LEN(arr)*=DARR_GROWTH_FACTOR;\
-arr = DARR_REALLOC(arr, DARR_LEN(arr));} while(0)
+#define DARR_GROW(arr) do {\
+    DARR_LEN(arr)*=DARR_GROWTH_FACTOR;\
+    arr = DARR_REALLOC(arr, DARR_LEN(arr));\
+} while(0)
 
 // DARR_PUT: put elem on top of darr, at DARR_NUM
 #define DARR_PUT(arr, elem) do {if ((DARR_NUM(arr) + 1) >= (DARR_LEN(arr))) {\
 DARR_GROW(arr);\
 }\
-arr[DARR_NUM(arr)++] = elem;} while(0)
+arr[DARR_NUM(arr)++] = elem;\
+} while(0)
 
 // DARR_POP: get top element of darr, and "remove" it by decrementing DARR_NUM
 #define DARR_POP(arr) do {arr[--DARR_NUM(arr)]} while(0)
