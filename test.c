@@ -121,6 +121,7 @@ void test_struct() {
     lok(test_arr[0].a == 1);
     lok(test_arr[0].b == 2);
     lok(test_arr[0].c == 3.0f);
+    DARR_FREE(test_arr);
 }
 
 
@@ -225,6 +226,9 @@ void test_len_num() {
     lok(test_arr[19] == 21);
     lok(DARR_NUM(test_arr) == 20);
 
+    lok(DARR_POP(test_arr) == 21);
+    lok(DARR_NUM(test_arr) == 19);
+
     size_t test_arr2_len = 20;
     uint16_t * test_arr2 = NULL;
     test_arr2 =  DARR_INIT(test_arr2, uint16_t, test_arr2_len);
@@ -233,6 +237,8 @@ void test_len_num() {
     DARR_GROW(test_arr2);
     lok(DARR_LEN(test_arr2) == test_arr2_len * DARR_GROWTH_FACTOR);
     lok(DARR_NUM(test_arr2) == 0);
+    DARR_FREE(test_arr);
+    DARR_FREE(test_arr2);
 }
 
 int main() {

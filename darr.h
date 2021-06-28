@@ -53,9 +53,9 @@ darr[DARR_NUM(darr)++] = elem;\
 } while(0)
 
 // DARR_POP: get top element of darr, and "remove" it by decrementing DARR_NUM
-#define DARR_POP(darr) do {darr[--DARR_NUM(darr)]} while(0)
+#define DARR_POP(darr) darr[--DARR_NUM(darr)]
 
 // DARR_FREE: free whole darr
-#define DARR_FREE(darr) do {free((((size_t* )darr) + DARR_LEN_POSITION))} while(0)
+#define DARR_FREE(darr) do {free((((size_t* )darr) + DARR_LEN_INDEX));} while(0)
 
 #endif /* DARR_H */
