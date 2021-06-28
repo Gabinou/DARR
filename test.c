@@ -101,6 +101,20 @@ void test_log2() {
     lok(log2(2.0) == 1);
 }
 
+void test_structs() {
+    typedef struct test_struct {
+        uint8_t a;    
+        uint64_t b;    
+        float c;    
+    } test_struct;
+    size_t test_arr_len = 10;
+    test_struct * test_arr = DARR_INIT(test_arr, test_struct, test_arr_len);
+    lok(DARR_LEN(test_arr) == test_arr_len);
+    lok(DARR_NUM(test_arr) == 0);
+
+}
+
+
 void test_len_num() {
     size_t test_arr_len = 10;
     uint8_t * test_arr = DARR_INIT(test_arr, uint8_t, test_arr_len);
@@ -154,6 +168,7 @@ int main() {
     dupprintf(globalf, "\nHello, World! I am testing darr.\n");
     lrun("log2", test_log2);
     lrun("test_len_num", test_len_num);
+    lrun("test_structs", test_structs);
 
     lresults();
 
