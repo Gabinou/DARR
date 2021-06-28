@@ -95,7 +95,7 @@ EXEC_CLANG := $(PREFIX)test_clang$(EXTENSION)
 compile_test: ${ASTYLE} ${EXEC_TCC} ${EXEC_GCC} ${EXEC_CLANG} tcc gcc clang
 
 .PHONY : cov
-cov:  $(TARGETS_TNECS) $(EXEC) run ; lcov -c --no-external -d . -o main_coverage.info ; genhtml main_coverage.info -o out
+cov: $(EXEC) run ; lcov -c --no-external -d . -o main_coverage.info ; genhtml main_coverage.info -o out
 
 .PHONY : run
 run: $(EXEC); $(EXEC)
@@ -116,6 +116,6 @@ $(EXEC_CLANG): $(SOURCES_TEST); clang $< -o $@ $(CFLAGS)
 .PHONY: clean
 clean: ; @echo "Cleaning DARR" & rm -frv $(EXEC) 
 .PHONY: cleancov
-cleancov: ; @echo "Cleaning DARR coverage tests" & rm -frv out *.gcda *.gcno *.gcov *.info
+cleancov: ; @echo "Cleaning DARR coverage tests" & rm -frv out *.gcda *.gcno *.gcov *.info *.exe *.bin
 .PHONY: cleanall
 cleanall: clean cleancov
