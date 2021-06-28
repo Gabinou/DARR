@@ -5,6 +5,7 @@
 #include <math.h>
 #include <time.h>
 #include <string.h>
+#include <stdarg.h>
 
 #include "darr.h"
 
@@ -100,14 +101,26 @@ void test_log2() {
     lok(log2(2.0) == 1);
 }
 
+void test_len_num() {
+    uint8_t * test_arr = DARR_INIT(test_arr, uint8_t, 10);
+    lok(DARR_LEN(test_arr) == 10);
+    lok(DARR_NUM(test_arr) == 0);
+
+    uint16_t * test_arr2 = NULL;
+    test_arr2 =  DARR_INIT(test_arr2, uint16_t, 20);
+    lok(DARR_LEN(test_arr2) == 20);
+    lok(DARR_NUM(test_arr2) == 0);
+}
+
 int main() {
-    globalf = fopen("linalg_test_results.txt", "w+");
-    dupprintf(globalf, "\nHello, World! I am testing linalg.\n");
+    globalf = fopen("darr_test_results.txt", "w+");
+    dupprintf(globalf, "\nHello, World! I am testing darr.\n");
     lrun("log2", test_log2);
+    lrun("test_len_num", test_len_num);
 
     lresults();
 
-    dupprintf(globalf, "linalg Test End \n \n");
+    dupprintf(globalf, "darr Test End \n \n");
     fclose(globalf);
     return (0);
 }
