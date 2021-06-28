@@ -28,7 +28,7 @@
 // DARR_DEL_SCRAMBLE: delete elem by copying top element over it, and decrementing DARR_NUM
 #define DARR_DEL_SCRAMBLE(darr, elem) do {\
     if (elem < DARR_NUM(darr)) {\
-        darr = memmove((darr + elem), (darr + --DARR_NUM(darr)), sizeof(*darr));\
+        memmove((darr + elem), (darr + --DARR_NUM(darr)), sizeof(*darr));\
     }\
 } while(0)
 
