@@ -88,6 +88,9 @@ all: ${ASTYLE} $(EXEC) run
 SOURCES_TEST := test.c
 HEADERS := $(wildcard *.h)
 SOURCES_ALL := $(SOURCES_TEST)
+EXEC_GCC := $(PREFIX)test_gcc$(EXTENSION)
+EXEC_TCC := $(PREFIX)test_tcc$(EXTENSION)
+EXEC_CLANG := $(PREFIX)test_clang$(EXTENSION)
 .PHONY: compile_test
 compile_test: ${ASTYLE} ${EXEC_TCC} ${EXEC_GCC} ${EXEC_CLANG} tcc gcc clang
 
@@ -99,7 +102,7 @@ run: $(EXEC); $(EXEC)
 .PHONY : tcc
 tcc: $(EXEC_TCC) ; $(EXEC_TCC)
 .PHONY : gcc
-gcc: $(EXEC_GCC) ; $(EXEC_GCC)
+gcc:$(EXEC_GCC) ; $(EXEC_GCC)
 .PHONY : clang
 clang: $(EXEC_CLANG) ; $(EXEC_CLANG)
 .PHONY : astyle
@@ -111,7 +114,7 @@ $(EXEC_GCC): $(SOURCES_TEST); gcc $< -o $@ $(CFLAGS)
 $(EXEC_CLANG): $(SOURCES_TEST); clang $< -o $@ $(CFLAGS)
 
 .PHONY: clean
-clean: ; @echo "Cleaning DARR" & rm -frv $(TARGETS_ALL) $(EXEC_ALL) 
+clean: ; @echo "Cleaning DARR" & rm -frv $(EXEC) 
 .PHONY: cleancov
 cleancov: ; @echo "Cleaning DARR coverage tests" & rm -frv out *.gcda *.gcno *.gcov *.info
 .PHONY: cleanall
