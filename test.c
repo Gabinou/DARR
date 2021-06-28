@@ -202,6 +202,10 @@ void test_len_num() {
     lok(test_arr[19] == 21);
     lok(test_arr[20] == testput);
     lok(DARR_NUM(test_arr) == 21);
+    DARR_DEL(test_arr, 300);
+    lok(DARR_NUM(test_arr) == 21);
+    DARR_DEL_SCRAMBLE(test_arr, 300);
+    lok(DARR_NUM(test_arr) == 21);
 
     DARR_DEL_SCRAMBLE(test_arr, 1);
     lok(test_arr[0] == 1);
