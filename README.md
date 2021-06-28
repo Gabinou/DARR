@@ -10,6 +10,7 @@ Originally created for use in a game I am developping using C99: [Codename Fires
 Add ```darr.h``` to your source code.
 
 ## Features
+- Compatible: compiles with ```tcc```, ```gcc```, ```clang``` 
 - Single file.
 - Simple: a darr is an array.
 - Short: < 100 lines
@@ -18,6 +19,7 @@ Add ```darr.h``` to your source code.
 Make a very simple dynamic array. 
 Be type agnostic.
 C99.
+Compileable with ```tcc```
 
 ## Credits
 Copyright (c) 2021 Average Bear Games, Made by Gabriel Taillon

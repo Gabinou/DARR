@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 // DARR: Dynamic arrays for C99.
-// A darr is basically an array with two additional elements, allocated length and number of active element saved at positions -2 and -1 respectively.
+// Dynamic arrays for C99. A darr is a simple array with two additional elements: allocated length and number of active element, saved at positions -2 and -1 respectively. 
 
 #define DARR_GROWTH_FACTOR 2
 #define DARR_LEN_INDEX 2
