@@ -18,7 +18,7 @@
 #define DARR_NUM(darr) (*((size_t *)darr + DARR_NUM_INDEX)) // number of active elements
 
 // DARR_INIT: a darr is an array with two size_t at indices -1 and -2.
-#define DARR_INIT(darr, type, len)(type*)(((size_t* )malloc(sizeof(size_t)*DARR_PTR_SHIFT + sizeof(type)*(len)))+DARR_PTR_SHIFT);\
+#define DARR_INIT(darr, type, len)(type*)(((size_t* )malloc(sizeof(size_t)*DARR_PTR_SHIFT + sizeof(type)*(len))) + DARR_PTR_SHIFT);\
     (*((size_t *)darr + DARR_LEN_INDEX)) = len;\
     (*((size_t *)darr + DARR_NUM_INDEX)) = 0;\
 
