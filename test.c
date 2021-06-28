@@ -174,7 +174,7 @@ void test_len_num() {
     lok(DARR_NUM(test_arr) == 20);
     DARR_PUT(test_arr, 21);
     lok(DARR_NUM(test_arr) == 21);
-    uint16_t testput = 1;
+    uint16_t testput = 40;
     DARR_PUT(test_arr, testput);
     lok(DARR_NUM(test_arr) == 22);
 
@@ -187,7 +187,43 @@ void test_len_num() {
     lok(test_arr[5] == 7);
     lok(test_arr[6] == 8);
     lok(test_arr[7] == 9);
+    lok(test_arr[8] == 10);
+    lok(test_arr[9] == 11);
+    lok(test_arr[10] == 12);
+    lok(test_arr[11] == 13);
+    lok(test_arr[12] == 14);
+    lok(test_arr[13] == 15);
+    lok(test_arr[14] == 16);
+    lok(test_arr[15] == 17);
+    lok(test_arr[16] == 18);
+    lok(test_arr[17] == 19);
+    lok(test_arr[18] == 20);
+    lok(test_arr[19] == 21);
+    lok(test_arr[20] == testput);
     lok(DARR_NUM(test_arr) == 21);
+
+    DARR_DEL_SCRAMBLE(test_arr, 1);
+    lok(test_arr[0] == 1);
+    lok(test_arr[1] == testput);
+    lok(test_arr[2] == 4);
+    lok(test_arr[3] == 5);
+    lok(test_arr[4] == 6);
+    lok(test_arr[5] == 7);
+    lok(test_arr[6] == 8);
+    lok(test_arr[7] == 9);
+    lok(test_arr[8] == 10);
+    lok(test_arr[9] == 11);
+    lok(test_arr[10] == 12);
+    lok(test_arr[11] == 13);
+    lok(test_arr[12] == 14);
+    lok(test_arr[13] == 15);
+    lok(test_arr[14] == 16);
+    lok(test_arr[15] == 17);
+    lok(test_arr[16] == 18);
+    lok(test_arr[17] == 19);
+    lok(test_arr[18] == 20);
+    lok(test_arr[19] == 21);
+    lok(DARR_NUM(test_arr) == 20);
 
     size_t test_arr2_len = 20;
     uint16_t * test_arr2 = NULL;
