@@ -10,7 +10,8 @@ Originally created for use in a game I am developping using C99: [Codename Fires
 Add ```darr.h``` to your source code.
 
 ## Features
-Single file library.
+- Single file library.
+- Very simple: a darr is an array.
 
 ## Motivation
 Make a very simple dynamic array. 
