@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <math.h>
 #include <time.h>
 #include <string.h>
 #include <stdarg.h>
@@ -83,16 +82,6 @@ void dupprintf(FILE * f, char const * fmt, ...) { // duplicate printf
 
 
 /*******************************ACTUAL TESTS***************************/
-void test_log2() {
-    lok(log2(0.0) == -INFINITY);
-    lok(log2(0.0) == -INFINITY);
-    lok(log2(0) == -INFINITY);
-    lok(log2(0) == -INFINITY);
-    lok(log2(1.0) == 0.0);
-    lok(log2(1.0) == 0);
-    lok(log2(2.0) == 1.0);
-    lok(log2(2.0) == 1);
-}
 
 void test_struct() {
     typedef struct temp_struct_def {
@@ -248,7 +237,6 @@ void test_len_num() {
 int main() {
     globalf = fopen("darr_test_results.txt", "w+");
     dupprintf(globalf, "\nHello, World! I am testing darr.\n");
-    lrun("log2", test_log2);
     lrun("test_len_num", test_len_num);
     lrun("test_struct", test_struct);
 
