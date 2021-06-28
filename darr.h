@@ -21,7 +21,6 @@
 #define DARR_NUM(arr) do {(*((size_t *)arr + DARR_NUM_INDEX))} while(0) // number of active elements
 
 // DARR_INIT: a darr is an array with two size_t at indices -1 and -2.
-//    EX: uint8_t * test_arr = DARR_INIT(test_arr, uint8_t, test_arr_len);
 #define DARR_INIT(arr, type, len) do {\
     (type*)(((size_t* )malloc(sizeof(size_t)*DARR_PTR_SHIFT + sizeof(type)*(len)))+DARR_PTR_SHIFT);\
     (*((size_t *)arr + DARR_LEN_INDEX)) = len;\
