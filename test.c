@@ -233,6 +233,13 @@ void test_len_num() {
     lok(DARR_POP(test_arr) == 21);
     lok(DARR_NUM(test_arr) == 19);
 
+    lok(DARR_NUM(test_arr) == 19);
+    DARR_DEL(test_arr, 18);
+    lok(DARR_NUM(test_arr) == 18);
+    DARR_DEL_SCRAMBLE(test_arr, 17);
+    lok(DARR_NUM(test_arr) == 17);
+
+
     size_t test_arr2_len = 20;
     uint16_t * test_arr2 = NULL;
     test_arr2 =  DARR_INIT(test_arr2, uint16_t, test_arr2_len);
