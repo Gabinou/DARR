@@ -101,17 +101,26 @@ void test_log2() {
     lok(log2(2.0) == 1);
 }
 
-void test_structs() {
-    typedef struct test_struct {
+void test_struct() {
+    typedef struct temp_struct_def {
         uint8_t a;    
         uint64_t b;    
         float c;    
-    } test_struct;
+    } temp_struct_def;
     size_t test_arr_len = 10;
-    test_struct * test_arr = DARR_INIT(test_arr, test_struct, test_arr_len);
+    temp_struct_def * test_arr = DARR_INIT(test_arr, temp_struct_def, test_arr_len);
     lok(DARR_LEN(test_arr) == test_arr_len);
     lok(DARR_NUM(test_arr) == 0);
-
+    temp_struct_def temp_struct;
+    temp_struct.a = 1;
+    temp_struct.b = 2;
+    temp_struct.c = 3.0f;
+    DARR_PUT(test_arr, temp_struct);
+    lok(DARR_LEN(test_arr) == test_arr_len);
+    lok(DARR_NUM(test_arr) == 1);
+    lok(test_arr[0].a == 1);
+    lok(test_arr[0].b == 2);
+    lok(test_arr[0].c == 3.0f);
 }
 
 
@@ -136,22 +145,49 @@ void test_len_num() {
     DARR_PUT(test_arr, 6);
     lok(DARR_NUM(test_arr) == 6);
     DARR_PUT(test_arr, 7);
+    lok(DARR_NUM(test_arr) == 7);
     DARR_PUT(test_arr, 8);
+    lok(DARR_NUM(test_arr) == 8);
     DARR_PUT(test_arr, 9);
+    lok(DARR_NUM(test_arr) == 9);
     DARR_PUT(test_arr, 10);
+    lok(DARR_NUM(test_arr) == 10);
     DARR_PUT(test_arr, 11);
+    lok(DARR_NUM(test_arr) == 11);
     DARR_PUT(test_arr, 12);
+    lok(DARR_NUM(test_arr) == 12);
     DARR_PUT(test_arr, 13);
+    lok(DARR_NUM(test_arr) == 13);
     DARR_PUT(test_arr, 14);
+    lok(DARR_NUM(test_arr) == 14);
     DARR_PUT(test_arr, 15);
+    lok(DARR_NUM(test_arr) == 15);
     DARR_PUT(test_arr, 16);
+    lok(DARR_NUM(test_arr) == 16);
     DARR_PUT(test_arr, 17);
+    lok(DARR_NUM(test_arr) == 17);
     DARR_PUT(test_arr, 18);
+    lok(DARR_NUM(test_arr) == 18);
     DARR_PUT(test_arr, 19);
+    lok(DARR_NUM(test_arr) == 19);
     DARR_PUT(test_arr, 20);
+    lok(DARR_NUM(test_arr) == 20);
     DARR_PUT(test_arr, 21);
+    lok(DARR_NUM(test_arr) == 21);
     uint16_t testput = 1;
     DARR_PUT(test_arr, testput);
+    lok(DARR_NUM(test_arr) == 22);
+
+    DARR_DEL(test_arr, 1);
+    lok(test_arr[0] == 1);
+    lok(test_arr[1] == 3);
+    lok(test_arr[2] == 4);
+    lok(test_arr[3] == 5);
+    lok(test_arr[4] == 6);
+    lok(test_arr[5] == 7);
+    lok(test_arr[6] == 8);
+    lok(test_arr[7] == 9);
+    lok(DARR_NUM(test_arr) == 21);
 
     size_t test_arr2_len = 20;
     uint16_t * test_arr2 = NULL;
@@ -168,7 +204,7 @@ int main() {
     dupprintf(globalf, "\nHello, World! I am testing darr.\n");
     lrun("log2", test_log2);
     lrun("test_len_num", test_len_num);
-    lrun("test_structs", test_structs);
+    lrun("test_struct", test_struct);
 
     lresults();
 
