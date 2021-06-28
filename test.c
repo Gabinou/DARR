@@ -109,28 +109,35 @@ void test_len_num() {
     DARR_GROW(test_arr);
     lok(DARR_LEN(test_arr) == test_arr_len * DARR_GROWTH_FACTOR);
     lok(DARR_NUM(test_arr) == 0);
-    DARR_PUT(test_arr, 1)
+    DARR_PUT(test_arr, 1);
     lok(DARR_NUM(test_arr) == 1);
-    DARR_PUT(test_arr, 2)
-    DARR_PUT(test_arr, 3)
-    DARR_PUT(test_arr, 4)
-    DARR_PUT(test_arr, 5)
-    DARR_PUT(test_arr, 6)
-    DARR_PUT(test_arr, 7)
-    DARR_PUT(test_arr, 8)
-    DARR_PUT(test_arr, 9)
-    DARR_PUT(test_arr, 10)
-    DARR_PUT(test_arr, 11)
-    DARR_PUT(test_arr, 12)
-    DARR_PUT(test_arr, 13)
-    DARR_PUT(test_arr, 14)
-    DARR_PUT(test_arr, 15)
-    DARR_PUT(test_arr, 16)
-    DARR_PUT(test_arr, 17)
-    DARR_PUT(test_arr, 18)
-    DARR_PUT(test_arr, 19)
-    DARR_PUT(test_arr, 20)
-    DARR_PUT(test_arr, 21)
+    DARR_PUT(test_arr, 2);
+    lok(DARR_NUM(test_arr) == 2);
+    DARR_PUT(test_arr, 3);
+    lok(DARR_NUM(test_arr) == 3);
+    DARR_PUT(test_arr, 4);
+    lok(DARR_NUM(test_arr) == 4);
+    DARR_PUT(test_arr, 5);
+    lok(DARR_NUM(test_arr) == 5);
+    DARR_PUT(test_arr, 6);
+    lok(DARR_NUM(test_arr) == 6);
+    DARR_PUT(test_arr, 7);
+    DARR_PUT(test_arr, 8);
+    DARR_PUT(test_arr, 9);
+    DARR_PUT(test_arr, 10);
+    DARR_PUT(test_arr, 11);
+    DARR_PUT(test_arr, 12);
+    DARR_PUT(test_arr, 13);
+    DARR_PUT(test_arr, 14);
+    DARR_PUT(test_arr, 15);
+    DARR_PUT(test_arr, 16);
+    DARR_PUT(test_arr, 17);
+    DARR_PUT(test_arr, 18);
+    DARR_PUT(test_arr, 19);
+    DARR_PUT(test_arr, 20);
+    DARR_PUT(test_arr, 21);
+    uint16_t testput = 1;
+    DARR_PUT(test_arr, testput);
 
     size_t test_arr2_len = 20;
     uint16_t * test_arr2 = NULL;
