@@ -82,13 +82,6 @@ void dupprintf(FILE * f, char const * fmt, ...) { // duplicate printf
 }
 
 
-/*****************************TEST CONSTANTS***************************/
-#define ITERATIONS 10000
-#define ARRAY_LEN 100
-size_t fps_iterations = 10;
-
-
-
 /*******************************ACTUAL TESTS***************************/
 void test_log2() {
     lok(log2(0.0) == -INFINITY);

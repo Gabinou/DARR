@@ -10,20 +10,19 @@
 // A darr is basically an array with two additional elements, allocated length and number of active element saved at positions -2 and -1 respectively.
 
 #define DARR_GROWTH_FACTOR 2
-#define DARR_PTR_SHIFT 2
-#define DARR_LEN_INDEX -2
-#define DARR_NUM_INDEX -1
+#define DARR_LEN_INDEX 2
+#define DARR_NUM_INDEX 1
 
-#define DARR_LEN(darr) (*((size_t *)darr + DARR_LEN_INDEX)) // allocated length
-#define DARR_NUM(darr) (*((size_t *)darr + DARR_NUM_INDEX)) // number of active elements
+#define DARR_LEN(darr) (*((size_t *)darr - DARR_LEN_INDEX)) // allocated length
+#define DARR_NUM(darr) (*((size_t *)darr - DARR_NUM_INDEX)) // number of active elements
 
 // DARR_INIT: a darr is an array with two size_t at indices -1 and -2.
-#define DARR_INIT(darr, type, len)(type*)(((size_t* )malloc(sizeof(size_t)*DARR_PTR_SHIFT + sizeof(type)*(len))) + DARR_PTR_SHIFT);\
-    (*((size_t *)darr + DARR_LEN_INDEX)) = len;\
-    (*((size_t *)darr + DARR_NUM_INDEX)) = 0;\
+#define DARR_INIT(darr, type, len)(type*)(((size_t* )malloc(sizeof(size_t)*DARR_LEN_INDEX + sizeof(type)*(len))) + DARR_LEN_INDEX);\
+    DARR_LEN(darr) = len;\
+    DARR_NUM(darr) = 0;\
 
 // DARR_REALLOC: DARR internal. Not to be called directly by users.
-#define DARR_REALLOC(darr, len) (void *)((size_t* )realloc(((size_t* )darr + DARR_LEN_INDEX), (sizeof(size_t)*DARR_PTR_SHIFT + (sizeof(*darr))*(len))) + DARR_PTR_SHIFT)
+#define DARR_REALLOC(darr, len) (void *)((size_t* )realloc(((size_t* )darr - DARR_LEN_INDEX), (sizeof(size_t)*DARR_LEN_INDEX + (sizeof(*darr))*(len))) + DARR_LEN_INDEX)
 
 // DARR_DEL_SCRAMBLE: delete elem by copying top element over it, and decrementing DARR_NUM
 #define DARR_DEL_SCRAMBLE(darr, elem) do {\
@@ -56,6 +55,6 @@ darr[DARR_NUM(darr)++] = elem;\
 #define DARR_POP(darr) darr[--DARR_NUM(darr)]
 
 // DARR_FREE: free whole darr
-#define DARR_FREE(darr) do {free((((size_t* )darr) + DARR_LEN_INDEX));} while(0)
+#define DARR_FREE(darr) do {free((((size_t* )darr) - DARR_LEN_INDEX));} while(0)
 
 #endif /* DARR_H */
