@@ -1,6 +1,6 @@
 
-#ifndef DARR_H
-#define DARR_H
+#ifndef DARR
+#define DARR
 
 #include <stddef.h>
 #include <stdint.h>
@@ -57,4 +57,4 @@ darr[DARR_NUM(darr)++] = elem;\
 // DARR_FREE: free whole darr
 #define DARR_FREE(darr) do {free((((size_t* )darr) - DARR_LEN_INDEX));} while(0)
 
-#endif /* DARR_H */
+#endif /* DARR */
