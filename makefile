@@ -114,8 +114,4 @@ $(EXEC_GCC): $(SOURCES_TEST); gcc $< -o $@ $(CFLAGS)
 $(EXEC_CLANG): $(SOURCES_TEST); clang $< -o $@ $(CFLAGS)
 
 .PHONY: clean
-clean: ; @echo "Cleaning DARR" & rm -frv $(EXEC) 
-.PHONY: cleancov
-cleancov: ; @echo "Cleaning DARR coverage tests" & rm -frv out *.gcda *.gcno *.gcov *.info *.exe *.bin
-.PHONY: cleanall
-cleanall: clean cleancov
+clean: ; @echo "Cleaning DARR" & rm -frv $(EXEC)  out *.gcda *.gcno *.gcov *.info *.exe *.bin
