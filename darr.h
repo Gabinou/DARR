@@ -1,4 +1,3 @@
-
 #ifndef DARR
 #define DARR
 
@@ -6,9 +5,9 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-/**********************DARR: DYNAMIC ARRAYS v1.0******************/
-// DARR: Dynamic arrays for C99.
-// A darr is a simple array with two additional elements: allocated length and number of active element, saved at positions -2 and -1 respectively.
+/********************** DARR: DYNAMIC ARRAYS FOR C99 v1.0 ******************/
+// A DARR is an array with two additional elements: 
+//   -> allocated length (len) at [-2] and number of active element (num) at [-1]
 
 #define DARR_GROWTH_FACTOR 2
 #define DARR_LEN_INDEX 2
@@ -17,7 +16,7 @@
 #define DARR_LEN(darr) (*((size_t *)darr - DARR_LEN_INDEX)) // allocated length
 #define DARR_NUM(darr) (*((size_t *)darr - DARR_NUM_INDEX)) // number of active elements
 
-// DARR_INIT: a darr is an array with two size_t at indices -1 and -2, respectively num and len.
+// DARR_INIT: a DARR is an array with  size_t num at -1 and size_t len at -2,
 #define DARR_INIT(darr, type, len)(type*)(((size_t* )malloc(sizeof(size_t)*DARR_LEN_INDEX + sizeof(type)*(len))) + DARR_LEN_INDEX);\
     DARR_LEN(darr) = len;\
     DARR_NUM(darr) = 0;\
@@ -25,7 +24,7 @@
 // DARR_REALLOC: DARR internal. Not to be called directly by users.
 #define DARR_REALLOC(darr, len) (void *)((size_t* )realloc(((size_t* )darr - DARR_LEN_INDEX), (sizeof(size_t)*DARR_LEN_INDEX + (sizeof(*darr))*(len))) + DARR_LEN_INDEX)
 
-// DARR_GROW: double length of array (depending on DARR_GROWTH_FACTOR)
+// DARR_GROW: increase array length by multiplying DARR_GROWTH_FACTOR
 #define DARR_GROW(darr) do {\
     DARR_LEN(darr)*=DARR_GROWTH_FACTOR;\
     darr = DARR_REALLOC(darr, DARR_LEN(darr));\
