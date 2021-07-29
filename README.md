@@ -19,7 +19,7 @@ Add ```darr.h``` to your source code.
 Make a very simple dynamic array. 
 Be type agnostic.
 C99.
-Compileable with ```tcc```
+Compileable with ```tcc```.
 
 ## Credits
 Copyright (c) 2021 Average Bear Games, Made by Gabriel Taillon
