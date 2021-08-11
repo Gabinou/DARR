@@ -14,6 +14,7 @@ Add ```darr.h``` to your source code.
 - Single file.
 - Simple: a darr is an array.
 - Short: < 100 lines
+- Included in [nmath](https://gitlab.com/Gabinou/noursmath)
 
 ## Motivation
 Make a very simple dynamic array. 
