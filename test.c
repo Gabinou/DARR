@@ -221,6 +221,15 @@ void test_len_num() {
     DARR_DEL_SCRAMBLE(test_arr, 17);
     lok(DARR_NUM(test_arr) == 17);
 
+    size_t index = 12, elem = 40;
+    DARR_INSERT(test_arr, elem, index);
+    lok(DARR_NUM(test_arr) == 18);
+    lok(test_arr[index] == elem);
+    index = 1;
+    elem = 100;
+    DARR_INSERT(test_arr, elem, index);
+    lok(DARR_NUM(test_arr) == 19);
+    lok(test_arr[index] == elem);
 
     size_t test_arr2_len = 20;
     uint16_t * test_arr2 = NULL;
@@ -230,6 +239,7 @@ void test_len_num() {
     DARR_GROW(test_arr2);
     lok(DARR_LEN(test_arr2) == test_arr2_len * DARR_GROWTH_FACTOR);
     lok(DARR_NUM(test_arr2) == 0);
+
     DARR_FREE(test_arr);
     DARR_FREE(test_arr2);
 }

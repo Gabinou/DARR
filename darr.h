@@ -2,6 +2,7 @@
 #define DARR
 
 #include <stddef.h>
+#include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -36,6 +37,15 @@ DARR_GROW(darr);\
 }\
 darr[DARR_NUM(darr)++] = elem;\
 } while(0)
+
+// DARR_INSERT: Put elem at inde, moving other elements over
+#define DARR_INSERT(darr, elem, index) do {if ((++DARR_NUM(darr)) >= (DARR_LEN(darr))) {\
+DARR_GROW(darr);\
+}\
+memmove((darr + index), (darr + index + 1), sizeof(*darr) * (DARR_NUM(darr) - index));\
+darr[index] = elem;\
+} while (0)
+
 
 // DARR_POP: get top element of darr, and "remove" it by decrementing DARR_NUM
 #define DARR_POP(darr) darr[--DARR_NUM(darr)]
